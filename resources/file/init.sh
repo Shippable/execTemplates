@@ -5,6 +5,7 @@ readonly COMMON_DIR="$ROOT_DIR/resources/common"
 readonly HELPERS_PATH="$COMMON_DIR/_helpers.sh"
 readonly LOGGER_PATH="$COMMON_DIR/_logger.sh"
 readonly CLICONFIG_SCRIPT_DIR="$ROOT_DIR/resources/cliConfig"
+readonly PULLCMD_DIR="$ROOT_DIR/resources/file/pull-cmd"
 
 # shellcheck source=resources/common/_helpers.sh
 source "$HELPERS_PATH"
@@ -62,7 +63,8 @@ init() {
   if [ "$IS_PULL_TRUE" == "true" ]; then
     check_params
     if [ ! -z "$INT_MASTER_NAME" ]; then
-      echo "TODO: add file resource with int handling in next pm"
+      "$CLICONFIG_SCRIPT_DIR/$INT_MASTER_NAME/init.sh" "$RESOURCE_NAME"
+      "$PULLCMD_DIR/$INT_MASTER_NAME.sh" "$FILE_URI" "$RESOURCE_STATE_PATH"
     else
       get_file "$RESOURCE_STATE_PATH"
     fi
