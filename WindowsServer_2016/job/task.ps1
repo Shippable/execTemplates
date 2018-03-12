@@ -38,6 +38,7 @@ Function install_shipctl() {
 }
 
 Function task() {
+  install_shipctl
   init_integrations
   <% _.each(obj.script, function(cmd) { %>
 exec_cmd @'
@@ -157,7 +158,6 @@ Function before_exit() {
 
 Function main() {
   $global:is_success = $TRUE
-  exec_grp "install_shipctl" "Installing ship_ctl components"
   Try
   {
     exec_grp "task" "Executing Task $env:TASK_NAME" $TRUE $FALSE
