@@ -75,6 +75,7 @@ task() {
   ret=0
   is_success=""
 
+  install_shipctl
   init_integrations
   ret=$?
   trap before_exit EXIT
@@ -136,9 +137,6 @@ fi
 
 trap before_exit EXIT
 exec_grp "add_subscription_ssh_key" "Adding Subscription SSH Key" "false"
-
-trap before_exit EXIT
-exec_grp "install_shipctl" "Installing ship_ctl components" "true"
 
 trap before_exit EXIT
 exec_grp "task" "Executing task: $TASK_NAME" "true" "false"
