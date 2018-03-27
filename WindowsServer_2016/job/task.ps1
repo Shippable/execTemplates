@@ -160,7 +160,7 @@ Function main() {
   $global:is_success = $TRUE
   Try
   {
-    exec_grp "task" "Executing Task $env:TASK_NAME" $TRUE $FALSE
+    exec_grp "task" "Executing Task: $env:TASK_NAME" $TRUE $FALSE
   }
   Catch
   {
