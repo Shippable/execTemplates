@@ -19,7 +19,9 @@ jobs:
     triggerMode: parallel
     dependencyMode: strict
     steps:
+      - IN: execTemplates_runCI
       - IN: execTemplates_sh_repo
+        switch: off
       - IN: shipit_bits_access_cli
         switch: off
       - TASK:
