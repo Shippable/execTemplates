@@ -28,9 +28,6 @@ Function exec_cmd([string]$cmd) {
     $date_time = (Get-Date).ToUniversalTime()
     $cmd_end_timestamp = [System.Math]::Truncate((Get-Date -Date $date_time -UFormat %s))
     Write-Output ""
-    $cmd_parts = $cmd.Split("{\n}")
-    $cmd_first_line = $cmd_parts[0]
-    Write-Output "$cmd_parts"
     $cmd_first_line = $cmd.Split([Environment]::NewLine) | select -First 1
     Write-Output "__SH__CMD__END__|{`"type`":`"cmd`",`"sequenceNumber`":`"$cmd_end_timestamp`",`"id`":`"$cmd_uuid`",`"exitcode`":`"$cmd_status`"}|$cmd_first_line"
   }
