@@ -31,8 +31,8 @@ Function exec_cmd([string]$cmd) {
     $cmd_parts = $cmd.Split("{\n}")
     $cmd_first_line = $cmd_parts[0]
     Write-Output "$cmd_parts"
-    Write-Output "$cmd_first_line"
-    Write-Output "__SH__CMD__END__|{`"type`":`"cmd`",`"sequenceNumber`":`"$cmd_end_timestamp`",`"id`":`"$cmd_uuid`",`"exitcode`":`"$cmd_status`"}|$cmd"
+    $cmd_first_line = $cmd.Split([Environment]::NewLine) | select -First 1
+    Write-Output "__SH__CMD__END__|{`"type`":`"cmd`",`"sequenceNumber`":`"$cmd_end_timestamp`",`"id`":`"$cmd_uuid`",`"exitcode`":`"$cmd_status`"}|$cmd_first_line"
   }
 }
 
