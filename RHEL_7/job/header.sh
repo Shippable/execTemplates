@@ -107,7 +107,8 @@ exec_cmd() {
   # If cmd output has no newline at end, marker parsing
   # would break. Hence force a newline before the marker.
   echo ""
-  echo "__SH__CMD__END__|{\"type\":\"cmd\",\"sequenceNumber\":\"$cmd_start_timestamp\",\"id\":\"$cmd_uuid\",\"exitcode\":\"$cmd_status\"}|$cmd"
+  local cmd_first_line=$(printf "$cmd" | head -n 1)
+  echo "__SH__CMD__END__|{\"type\":\"cmd\",\"sequenceNumber\":\"$cmd_start_timestamp\",\"id\":\"$cmd_uuid\",\"exitcode\":\"$cmd_status\"}|$cmd_first_line"
   return $cmd_status
 }
 
