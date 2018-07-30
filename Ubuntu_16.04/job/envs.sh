@@ -32,10 +32,15 @@ export SHIPPABLE_NODE_ARCHITECTURE="<%= obj.shippableRuntimeEnvs.shippableNodeAr
 export SHIPPABLE_NODE_OPERATING_SYSTEM="<%= obj.shippableRuntimeEnvs.shippableNodeOperatingSystem %>"
 export TASK_NAME="<%= obj.shippableRuntimeEnvs.taskName %>"
 export TASK_IN_CONTAINER=<%= obj.shippableRuntimeEnvs.isTaskInContainer %>
+export IS_RESTRICTED_NODE=<%= obj.shippableRuntimeEnvs.isRestrictedNode %>
 if [ "$TASK_IN_CONTAINER" == true ]; then
   export TASK_CONTAINER_OPTIONS="<%= obj.shippableRuntimeEnvs.taskContainerOptions %>"
   export TASK_CONTAINER_IMAGE="<%= obj.shippableRuntimeEnvs.taskContainerImage %>"
   export TASK_CONTAINER_IMAGE_SHOULD_PULL="<%= obj.shippableRuntimeEnvs.shouldPullTaskContainerImage %>"
   export TASK_CONTAINER_COMMAND="<%= obj.shippableRuntimeEnvs.taskContainerCommand %>"
   export TASK_CONTAINER_NAME="<%= obj.shippableRuntimeEnvs.taskContainerName %>"
+  if [ "$IS_RESTRICTED_NODE" == true ]; then
+    export SHIPPABLE_DIND_IMAGE="<%= obj.shippableRuntimeEnvs.shippableDindImage %>"
+    export SHIPPABLE_DIND_CONTAINER_NAME="<%= obj.shippableRuntimeEnvs.shippableDindContainerName %>"
+  fi
 fi
