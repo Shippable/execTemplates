@@ -4,7 +4,7 @@
 
 This project contains all the script templates that are used to execute a build
 on Shippable. [ReqProc](https://github.com/Shippable/reqProc) combines the generic
-templates present in this project with the build data to generate
+templates present in this project with build data to generate
 build-specific `bash` scripts. These scripts are eventually executed by [reqExec](https://github.com/Shippable/reqExec)
 either on the build node or inside a Docker container.
 
@@ -12,6 +12,8 @@ either on the build node or inside a Docker container.
 ## Development
 
 The script templates are present in a separate folder for each supported OS.
+This ensures a clean separation at the cost of slight redundancy. Read [contributing guidelines](https://github.com/Shippable/execTemplates/blob/master/CONTRIBUTING.md) for
+conventions to add new scripts.
 
 Any merged change in the project triggers Shippable assembly lines to
 re-package the templates with [ReqProc](https://github.com/Shippable/reqProc)
