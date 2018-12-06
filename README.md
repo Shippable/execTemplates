@@ -8,7 +8,6 @@ templates present in this project with build data to generate
 build-specific `bash` scripts. These scripts are eventually executed by [reqExec](https://github.com/Shippable/reqExec)
 either on the build node or inside a Docker container.
 
-
 ## Development
 
 The script templates are present in a separate folder for each supported OS.
@@ -16,8 +15,8 @@ This ensures a clean separation at the cost of slight redundancy. Read [contribu
 conventions to add new scripts.
 
 Any merged change in the project triggers Shippable assembly lines to
-re-package the templates with [ReqProc](https://github.com/Shippable/reqProc)
-and push the updated, platform-specific docker images for each supported OS and
+re-package the templates with [reqProc](https://github.com/Shippable/reqProc)
+and push the updated, platform-specific Docker images for each supported OS and
 architecture with `master` tag.
 
 Once all the jobs are completed, the scripts can be tested by initializing nodes
