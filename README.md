@@ -27,6 +27,8 @@ Supported platforms:
 | ARCHITECTURE   | OS                  |
 | ------------   | --                  |
 | x86_64         | Ubuntu_16.04        |
+| x86_64         | Ubuntu_14.04        |
+| x86_64         | Centos 7            |
 | x86_64         | macOS_10.12         |
 | aarch64        | Ubuntu_16.04        |
 | x86_64         | WindowsServer_2016  |
